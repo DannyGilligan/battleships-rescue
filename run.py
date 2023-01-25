@@ -12,8 +12,8 @@ ENEMY_HIT_SYMBOL = "X"                          #Symbol to denote a hit on an en
 MISS_SYMBOL = "O"                               #Symbol to denote a miss
 MERCHANT_HIT_SYMBOL = "M"                       #Symbol to denote a hit on a friendly merchant ship
 
-ROWS = 7                                        #Y axis (the rows will be counted vertically)
-COLS = 7                                        #X axis (the columns will be counted horizontally)
+ROWS = 8                                        #Y axis (the rows will be counted vertically)
+COLS = 8                                        #X axis (the columns will be counted horizontally)
 
 GAME_BOARD = []                                 #Empty list to hold the list of lists that will form the game board
 
@@ -27,10 +27,10 @@ def print_game_board():
     print("\n---------------------- Battleship Command Operations Deck ----------------------\n\nAmmunition Remaining = \n\n[O] Misses =\n[X] Enemy Ships Hit = X     (*5* Remaining)\n[M] Merchant Ships Hit = M  (*2* Remaining)\n")
     col_headers = []                             #Empty array to hold the column header values based on the userinput
     for i in range(COLS):                        #Iterates based on the range dictated by the user input  
-        col_header = i                           #Provides a placeholder for the loop values
+ 
         col_headers.append(i)                    #Appends the column header numbers to the array 
     col_headers.insert(0," ")                    #NOTE FOR BUG, HAD TO INDENT THIS OUTSIDE OF THE LOOP, and insert a blank space so it would align
-    print(*col_headers, sep= ' ')                #Breaks out the column headers from the array and prints horizontally
+    print(*col_headers, sep=' ')                 #Breaks out the column headers from the array and prints horizontally
 
     row_counter = 0
     for row_array in GAME_BOARD: 
@@ -40,4 +40,4 @@ def print_game_board():
             print(col_elem, end=" ")
         print()
 
-
+print_game_board()
