@@ -32,4 +32,12 @@ def print_game_board():
     col_headers.insert(0," ")                    #NOTE FOR BUG, HAD TO INDENT THIS OUTSIDE OF THE LOOP, and insert a blank space so it would align
     print(*col_headers, sep= ' ')                #Breaks out the column headers from the array and prints horizontally
 
+    row_counter = 0
+    for row_array in GAME_BOARD: 
+        print(row_counter, end=" ")
+        row_counter += 1
+        for col_elem in row_array:
+            print(col_elem, end=" ")
+        print()
+
 
