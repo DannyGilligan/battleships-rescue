@@ -1,6 +1,9 @@
 # Your code goes here.
 # You can delete these comments, but do not change the name of this file
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
+from random import randint
+import time
+
 
 HEADER = "\n___________________________________BATTLESHIP___________________________________\n_____________________________________RESCUE_____________________________________\n"
 
@@ -27,8 +30,8 @@ def print_game_board():
     col_headers = []                             # Empty array to hold the column header values based on the userinput
     for i in range(COLS):                        # Iterates based on the range dictated by the user input  
         col_headers.append(i)                    # Appends the column header numbers to the array 
-    col_headers.insert(0, " ")                    # NOTE FOR BUG, HAD TO INDENT THIS OUTSIDE OF THE LOOP, and insert a blank space so it would align
-    print("                             ", *col_headers, sep = ' ')                 # Breaks out the column headers from the array and prints horizontally
+    col_headers.insert(0, " ")                   # NOTE FOR BUG, HAD TO INDENT THIS OUTSIDE OF THE LOOP, and insert a blank space so it would align
+    print("                             ", *col_headers, sep = ' ')       # Breaks out the column headers from the array and prints horizontally
 
     row_counter = 0
     for row_array in GAME_BOARD: 
@@ -40,4 +43,23 @@ def print_game_board():
 
 GAME_BOARD[4][3] = ENEMY_HIT_SYMBOL
 
-print_game_board()
+def ship_generator():
+    """
+    Generates random locations for ships
+    """
+    ships = []                      # Creates an empty array to store locations
+    while len(ships) < 7:           # While loop that will terminate after 7 ships created
+        xy = str(randint(1, 5)) + ',' + str(randint(1, 5))  # Creates random x,y coordinates
+        if xy not in ships:         # Checks if location is not already in the array
+            ships.append(xy)        # Appends location to ship array
+    return ships                    # Returns the values
+
+ship_locations = ship_generator()   # Assigns generated locations to variable
+
+
+
+print(ship_locations)
+
+
+
+
