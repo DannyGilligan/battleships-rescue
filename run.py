@@ -12,4 +12,6 @@ ENEMY_HIT_SYMBOL = "X"                  #Symbol to denote a hit on an enemy ship
 MISS_SYMBOL = "O"                       #Symbol to denote a miss
 MERCHANT_HIT_SYMBOL = "M"               #Symbol to denote a hit on a friendly merchant ship
 
+ROWS = 7                                #Y axis (the rows will be counted vertically)
+COLS = 7                                #X axis (the columns will be counted horizontally)
 
