@@ -20,6 +20,16 @@ GAME_BOARD = []                                 #Empty list to hold the list of 
 for row in range(ROWS):                         #For loop to generate rows on the game board based on the ROWS value
     GAME_BOARD.append([DEFAULT_SYMBOL] * COLS)  #Code to create the 'column' elements within each row array by appending a '~' symbol as a placeholder multiplied by the COLS value
 
-
+def print_game_board():
+    """
+    This function will generate a dynamically sized game board based on the number of rows and columns determined by the user's input
+    """
+    print("\n---------------------- Battleship Command Operations Deck ----------------------\n\nAmmunition Remaining = \n\n[O] Misses =\n[X] Enemy Ships Hit = X     (*5* Remaining)\n[M] Merchant Ships Hit = M  (*2* Remaining)\n")
+    col_headers = []                             #Empty array to hold the column header values based on the userinput
+    for i in range(COLS):                        #Iterates based on the range dictated by the user input  
+        col_header = i                           #Provides a placeholder for the loop values
+        col_headers.append(i)                    #Appends the column header numbers to the array 
+    col_headers.insert(0," ")                    #NOTE FOR BUG, HAD TO INDENT THIS OUTSIDE OF THE LOOP, and insert a blank space so it would align
+    print(*col_headers, sep= ' ')                #Breaks out the column headers from the array and prints horizontally
 
 
