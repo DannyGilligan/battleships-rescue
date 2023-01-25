@@ -23,16 +23,16 @@ def print_game_board():
     """
     This function will generate a dynamically sized game board based on the number of rows and columns determined by the user's input
     """
-    print("\n---------------------- Battleship Command Operations Deck ----------------------\n\nAmmunition Remaining = \n\n[O] Misses =\n[X] Enemy Ships Hit = X     (*5* Remaining)\n[M] Merchant Ships Hit = M  (*2* Remaining)\n")
+    print("---------------------- Battleship Command Operations Deck ----------------------\n\nAmmunition Remaining = \n\n[O] Misses =\n[X] Enemy Ships Hit = X     (*5* Remaining)\n[M] Merchant Ships Hit = M  (*2* Remaining)\n")
     col_headers = []                             # Empty array to hold the column header values based on the userinput
     for i in range(COLS):                        # Iterates based on the range dictated by the user input  
         col_headers.append(i)                    # Appends the column header numbers to the array 
     col_headers.insert(0," ")                    # NOTE FOR BUG, HAD TO INDENT THIS OUTSIDE OF THE LOOP, and insert a blank space so it would align
-    print(*col_headers, sep=' ')                 # Breaks out the column headers from the array and prints horizontally
+    print(" ",*col_headers, sep=' ')                 # Breaks out the column headers from the array and prints horizontally
 
     row_counter = 0
     for row_array in GAME_BOARD: 
-        print(row_counter, end=" ")
+        print(" ",row_counter, end=" ")
         row_counter += 1
         for col_elem in row_array:
             print(col_elem, end=" ")
