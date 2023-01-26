@@ -49,17 +49,26 @@ def ship_generator():
     """
     ships = []                      # Creates an empty array to store locations
     while len(ships) < 7:           # While loop that will terminate after 7 ships created
-        xy = str(randint(1, 5)) + ',' + str(randint(1, 5))  # Creates random x,y coordinates
+        xy = str(randint(0, ROWS)) + ',' + str(randint(0, COLS))  # Creates random x,y coordinates on each loop
         if xy not in ships:         # Checks if location is not already in the array
             ships.append(xy)        # Appends location to ship array
     return ships                    # Returns the values
 
 ship_locations = ship_generator()   # Assigns generated locations to variable
 
+enemy_ship_locations = [ship_locations[0], ship_locations[1], ship_locations[2], ship_locations[3], ship_locations[4]]  # The enemy ship locations are retrived from the first 5 elements of the ship_location variable
+merchant_ship_locations = [ship_locations[5], ship_locations[6]]        # The Merchant ships are retrieved from the last two elements in the ship_locations array
 
 
-print(ship_locations)
 
+print(merchant_ship_locations)
+test_coordinates = '8,5'
 
+def test():
+    if ship_locations[5] in merchant_ship_locations:
+        print('SUCCESS!')
+    else:
+        print('FAIL')
 
+test()
 
