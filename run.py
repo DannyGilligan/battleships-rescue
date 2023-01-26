@@ -10,7 +10,7 @@ HEADER = "\n___________________________________BATTLESHIP_______________________
 
 
 
-DEFAULT_SYMBOL = "~"           # Defualt symbol
+DEFAULT_SYMBOL = "~"           # Default symbol
 ENEMY_HIT_SYMBOL = "X"         # Hit on an enemy ship
 MISS_SYMBOL = "O"              # Denotes a miss
 MERCHANT_HIT_SYMBOL = "M"      # Denotes hit on friendly merchant ship
