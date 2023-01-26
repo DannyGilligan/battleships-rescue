@@ -27,7 +27,7 @@ def print_game_board():
     """
     This function will generate a dynamically sized game board based on the number of rows and columns determined by the user's input
     """
-    os.system('cls' if os.name == 'nt' else 'clear')
+    os.system('cls' if os.name == 'nt' else 'clear')  # Code from stack overflow forum on how to clear screen
     print("---------------------- Battleship Command Operations Deck ----------------------\n\nAmmunition Remaining   = \n\n[O] Misses             = O\n[X] Enemy Ships Hit    = X  (*5* Remaining)\n[M] Merchant Ships Hit = M  (*2* Remaining)\n")
     col_headers = []                             # Empty array to hold the column header values based on the userinput
     for i in range(COLS):                        # Iterates based on the range dictated by the user input  
