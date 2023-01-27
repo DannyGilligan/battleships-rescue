@@ -1,8 +1,4 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-Welcome DannyGilligan,
-
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
 
 ## Reminders
 
@@ -10,22 +6,24 @@ This is the Code Institute student template for deploying your third portfolio p
 * Your dependencies must be placed in the `requirements.txt` file
 * Do not edit any of the other files or your code may not deploy properly
 
-## Creating the Heroku app
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
 
-1. `heroku/python`
-2. `heroku/nodejs`
+## Battleship Rescue
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+* This app has been deployed, however due to time constraints it is not complete, the game is stil being developed.
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+The screenshots below give a rough outline of the intended design of the app.
 
-Connect your GitHub repository and deploy as normal.
+Log in screen:
 
-## Constraints
+![image](https://user-images.githubusercontent.com/112653322/215077238-9598d6dd-6d27-4394-873a-7201a599d952.png)
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
 
------
-Happy coding!
+Mission details and accept screen:
+
+![image](https://user-images.githubusercontent.com/112653322/215077360-34cedd2c-568f-487d-845d-57b704f9136b.png)
+
+Game board area:
+
+![image](https://user-images.githubusercontent.com/112653322/215077426-6f4b636e-4dad-4861-b450-29e645c22fcb.png)
+
