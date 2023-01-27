@@ -1,13 +1,5 @@
 
 
-## Reminders
-
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
-
-
-
 ## Battleship Rescue
 
 * This app has been deployed, however due to time constraints it is not complete, the game is stil being developed.
@@ -26,4 +18,7 @@ Mission details and accept screen:
 Game board area:
 
 ![image](https://user-images.githubusercontent.com/112653322/215077426-6f4b636e-4dad-4861-b450-29e645c22fcb.png)
+
+
+The app is currently not playable.
 
