@@ -127,7 +127,7 @@ os.system('cls' if os.name == 'nt' else 'clear')
 
 print_game_board()
 
-row_fire_upon = input('SELECT ROW/LONGITUDE TO FIRE UPON:\n')
+row_fire_upon = input('\nSELECT ROW/LONGITUDE TO FIRE UPON:\n')
 
 column_fire_upon = input('\nSELECT COLUMN/LATITUDE TO FIRE UPON:\n')
 
