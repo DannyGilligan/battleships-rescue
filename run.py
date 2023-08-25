@@ -117,7 +117,7 @@ if response.lower() == "no":
     os.system('cls' if os.name == 'nt' else 'clear')
     print(HEADER)
     print("\n\n\n\n\n\n\n\n\n                 This war will be won only by those with the \n                   courage to take the fight to the enemy.")
-    time.sleep(20)
+    time.sleep(6)
     exit()
  
 
