@@ -72,25 +72,25 @@ print(HEADER)
 
 name = input("\n\n\n\n                                Enter Username:\n")
 
-while len(name) > 10 or len(name) < 2:
+while len(name) > 10 or len(name) < 2:         # A while loop is used here to perform a validation check on the username input and ensures it is between 2 and 10 characters before being accepted
     os.system('cls' if os.name == 'nt' else 'clear')
     print(HEADER)
     time.sleep(.25)
     name = input("\n\n\n\n           Please enter a valid username between 2 and 10 characters:\n")
 
-print('                               Username accepted')
+print('                               Username accepted')    # A confirmation is displayed to the user once the username has been accepted
 
     
 
 MISSION_MESSAGE = f"                  Above Top Secret: For {name}'s eyes only.\n\nYour mission is to intercept and destroy a fleet of 5 enemy Destroyers \nthat are currently in pursuit of 2 friendly Merchant ships sailing for our \nNorthern Port. These Merchant ships are on a clandestine mission to deliver \nclassified cargo that will turn the tide of this war once and for all!\n\nUnfortunately, during a recent skirmish, the Merchant ships lost all \ncommunication capabilities and the Enemy's radar jamming technology is \npreventing us from locating them. But we know they're out there, somewhere.\n\nHunt down the enemy with extreme prejudice. Avoid friendly fire at all costs. \n\nRescue the Merchant Ships. Losing that cargo, means losing the war!\n"
-time.sleep(.5)
+time.sleep(.4)
 
 
-time.sleep(.5)
+time.sleep(.4)
 
 print('\n\n                           Retreiving Mission Details\n\n')
 
-time.sleep(1.5)
+time.sleep(1.2)
 
 os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -103,7 +103,7 @@ print(MISSION_MESSAGE)
 
 mission_accept_valid_response = False
 
-while not mission_accept_valid_response:
+while not mission_accept_valid_response:    # A while loop is used again here to perform a validation check on the user input for the 'Accept Mission' screen and ensures the input is either 'Yes' or 'No'
     response = input("\n                         Accept Mission? (Yes or No)\n")
     if response.lower() == 'yes' or response.lower() == 'no':
         mission_accept_valid_response = True
@@ -112,7 +112,7 @@ while not mission_accept_valid_response:
         print(HEADER)
         print(MISSION_MESSAGE)
 
-if response.lower() == "no":
+if response.lower() == "no":    # An if statement is used here to exit the program if the user inputs 'No' as the answer on the 'Accept Mission' screen
     time.sleep(.5)
     os.system('cls' if os.name == 'nt' else 'clear')
     print(HEADER)
