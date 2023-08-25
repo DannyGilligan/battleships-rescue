@@ -28,7 +28,7 @@ def print_game_board():
     This function will generate a dynamically sized game board based on the number of rows and columns determined by the user's input
     """
     os.system('cls' if os.name == 'nt' else 'clear')  # Code from stack overflow forum on how to clear screen
-    print("---------------------- Battleship Command Operations Deck ----------------------\n\nAmmunition Remaining   = \n\n[O] Misses             = O\n[X] Enemy Ships Hit    = X  (*5* Remaining)\n[M] Merchant Ships Hit = M  (*2* Remaining)\n")
+    print(f"---------------------- Battleship Command Operations Deck ----------------------\n\nAmmunition Remaining   = {ammunition}\n\n[O] Misses             = {misses}\n[X] Enemy Ships Hit    = {enemy_ships_sunk_counter}  ({enemy_ships_afloat_counter} Remaining)\n[M] Merchant Ships Hit = {merchant_ships_sunk_counter}  ({merchant_ships_afloat_counter} Remaining)\n")
     col_headers = []                             # Empty array to hold the column header values based on the userinput
     for i in range(COLS):                        # Iterates based on the range dictated by the user input  
         col_headers.append(i)                    # Appends the column header numbers to the array 
@@ -58,8 +58,22 @@ def ship_generator():
 
 ship_locations = ship_generator()   # Assigns generated locations to variable
 
-enemy_ship_locations = [ship_locations[0], ship_locations[1], ship_locations[2], ship_locations[3], ship_locations[4]]  # The enemy ship locations are retrived from the first 5 elements of the ship_location variable
-merchant_ship_locations = [ship_locations[5], ship_locations[6]]        # The Merchant ships are retrieved from the last two elements in the ship_locations array
+ammunition = 14
+
+misses = 0
+
+enemy_ships_afloat = [ship_locations[0], ship_locations[1], ship_locations[2], ship_locations[3], ship_locations[4]]  # The enemy ship locations are retrived from the first 5 elements of the ship_location variable
+enemy_ships_sunk = []    # Array to hold coordinates of sunken enemy ships
+enemy_ships_afloat_counter = len(enemy_ships_afloat) # Variable to count remaining ships
+enemy_ships_sunk_counter = len(enemy_ships_sunk)  # Variable to count sunk ships
+
+merchant_ships_afloat = [ship_locations[5], ship_locations[6]]        # The Merchant ships are retrieved from the last two elements in the ship_locations array
+merchant_ships_sunk = []    # Array to hold coordinates of sunken merchant ships
+merchant_ships_afloat_counter = len(merchant_ships_afloat)  # Variable to count remaining ships
+merchant_ships_sunk_counter = len(merchant_ships_sunk)  # Variable to count sunk ships
+
+
+
 
 
 # Code below here has been added to outline the pages leading up to displaying the game board to the user
@@ -141,3 +155,4 @@ time.sleep(.5)
 fire_upon_status = ('                    **** YOU SUNK AN ENEMY DESTROYER ****')
 
 print(fire_upon_status)
+print(enemy_ships_afloat_counter)
