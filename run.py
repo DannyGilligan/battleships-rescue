@@ -121,17 +121,17 @@ if response.lower() == "no":    # An if statement is used here to exit the progr
     exit()
  
 
-print(response)
-
 time.sleep(.5)
 
 os.system('cls' if os.name == 'nt' else 'clear')
 
 print_game_board()
 
-column_fire_upon = input('\nSELECT COLUMN TO FIRE UPON:\n')
+row_fire_upon = input('SELECT ROW/LONGITUDE TO FIRE UPON:\n')
 
-row_fire_upon = input('SELECT ROW TO FIRE UPON:\n')
+column_fire_upon = input('\nSELECT COLUMN/LATITUDE TO FIRE UPON:\n')
+
+
 
 column_fire_coordinate = column_fire_upon
 row_fire_coordinate = row_fire_upon
