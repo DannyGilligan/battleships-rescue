@@ -83,7 +83,7 @@ merchant_ships_sunk_counter = len(merchant_ships_sunk)  # Variable to count sunk
 time.sleep(1)
 print(HEADER)
 
-difficulty_level = input("\n\n             Choose difficuly level:  (Easy, Normal, Hard)\n")
+difficulty_level = input("\n\n\n\n             Choose difficuly level:  (Easy, Normal, Hard)\n")
 
 difficulty_level_options = ["easy", "normal", "hard"]
 
@@ -91,7 +91,7 @@ while difficulty_level.lower() not in difficulty_level_options:  # A while loop 
     os.system('cls' if os.name == 'nt' else 'clear')
     print(HEADER)
     time.sleep(.25)
-    difficulty_level = input("\n\n             Choose difficuly level:  (Easy, Normal, Hard)\n")
+    difficulty_level = input("\n\n\n\n             Choose difficuly level:  (Easy, Normal, Hard)\n")
 
 time.sleep(.5)
 os.system('cls' if os.name == 'nt' else 'clear')
@@ -105,7 +105,7 @@ while len(name) > 10 or len(name) < 2:         # A while loop is used here to pe
     time.sleep(.25)
     name = input("\n\n\n\n           Please enter a valid username between 2 and 10 characters:\n")
 
-print('                               Username accepted')    # A confirmation is displayed to the user once the username has been accepted
+print('\n\n\n\n                               Username accepted')    # A confirmation is displayed to the user once the username has been accepted
 
     
 
@@ -115,7 +115,7 @@ time.sleep(.4)
 
 time.sleep(.4)
 
-print('\n\n                           Retreiving Mission Details\n\n')
+print('\n\n\n\n\n\n                           Retreiving Mission Details')
 
 time.sleep(1.2)
 
