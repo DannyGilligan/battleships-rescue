@@ -69,15 +69,15 @@ merchant_ship_locations = [ship_locations[5], ship_locations[6]]        # The Me
 time.sleep(1)
 print(HEADER)
 
-def name_validation(name):
-    return 1 > len(name) <= 10
 
 name = input("\n\n\n\n                                Enter Username:\n")
 
-if name_validation(name):
-    print('                               Username accepted')
-else:
-    print('               Please enter a valid username between 3 and 10 characters')
+while 1 < len(name) > 10:
+    name = input('           Please enter a valid username between 3 and 10 characters')
+
+print('                               Username accepted')
+
+    
 
 MISSION_MESSAGE = f"                  Above Top Secret: For {name}'s eyes only.\n\nYour mission is to intercept and destroy a fleet of 5 enemy Destroyers \nthat are currently in pursuit of 2 friendly Merchant ships sailing for our \nNorthern Port. These Merchant ships are on a clandestine mission to deliver \nclassified cargo that will turn the tide of this war once and for all!\n\nUnfortunately, during a recent skirmish, the Merchant ships lost all \ncommunication capabilities and the Enemy's radar jamming technology is \npreventing us from locating them. But we know they're out there, somewhere.\n\nHunt down the enemy with extreme prejudice. Avoid friendly fire at all costs. \n\nRescue the Merchant Ships. Losing that cargo, means losing the war!\n"
 time.sleep(.5)
