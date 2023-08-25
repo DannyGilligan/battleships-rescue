@@ -69,25 +69,52 @@ merchant_ship_locations = [ship_locations[5], ship_locations[6]]        # The Me
 time.sleep(1)
 print(HEADER)
 
+def name_validation(name):
+    return len(name) > 3 and < 10
+
 name = input("\n\n\n\n                                Enter Username:\n")
+
+if name_validation(name):
+    print('                               Username accepted')
+else:
+    print('               Please enter a valid username between 3 and 10 characters')
+
 MISSION_MESSAGE = f"                  Above Top Secret: For {name}'s eyes only.\n\nYour mission is to intercept and destroy a fleet of 5 enemy Destroyers \nthat are currently in pursuit of 2 friendly Merchant ships sailing for our \nNorthern Port. These Merchant ships are on a clandestine mission to deliver \nclassified cargo that will turn the tide of this war once and for all!\n\nUnfortunately, during a recent skirmish, the Merchant ships lost all \ncommunication capabilities and the Enemy's radar jamming technology is \npreventing us from locating them. But we know they're out there, somewhere.\n\nHunt down the enemy with extreme prejudice. Avoid friendly fire at all costs. \n\nRescue the Merchant Ships. Losing that cargo, means losing the war!\n"
 time.sleep(.5)
-print('                               Username accepted')
+
+# print('                               Username accepted')
+
 time.sleep(.5)
+
 print('\n\n                           Retreiving Mission Details\n\n')
+
 time.sleep(1.5)
+
 os.system('cls' if os.name == 'nt' else 'clear')
+
 time.sleep(.5)
+
 print(HEADER)
+
 print(MISSION_MESSAGE)
+
 mission_accept = input("\n                              Accept Mission? Y/N\n")
+
 time.sleep(.5)
+
 os.system('cls' if os.name == 'nt' else 'clear')
+
 print_game_board()
+
 column_fire_upon = input('\nSELECT COLUMN TO FIRE UPON:\n')
+
 row_fire_upon = input('SELECT ROW TO FIRE UPON:\n')
+
 column_fire_coordinate = column_fire_upon
 row_fire_coordinate = row_fire_upon
+
 time.sleep(.5)
+
 fire_upon_status = ('                    **** YOU SUNK AN ENEMY DESTROYER ****')
+
 print(fire_upon_status)
