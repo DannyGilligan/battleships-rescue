@@ -72,8 +72,8 @@ print(HEADER)
 
 name = input("\n\n\n\n                                Enter Username:\n")
 
-while 1 < len(name) > 10:
-    name = input('           Please enter a valid username between 3 and 10 characters')
+while 2 > len(name) > 10:
+    name = input('           Please enter a valid username between 2 and 10 characters')
 
 print('                               Username accepted')
 
