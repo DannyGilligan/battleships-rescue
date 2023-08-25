@@ -73,7 +73,10 @@ print(HEADER)
 name = input("\n\n\n\n                                Enter Username:\n")
 
 while len(name) > 10 or len(name) < 2:
-    name = input("           Please enter a valid username between 2 and 10 characters:\n")
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print(HEADER)
+    time.sleep(.25)
+    name = input("\n\n\n\n           Please enter a valid username between 2 and 10 characters:\n")
 
 print('                               Username accepted')
 
