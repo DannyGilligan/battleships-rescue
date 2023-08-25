@@ -70,7 +70,7 @@ time.sleep(1)
 print(HEADER)
 
 def name_validation(name):
-    return len(name) > 3 and < 10
+    return 1 > len(name) <= 10
 
 name = input("\n\n\n\n                                Enter Username:\n")
 
