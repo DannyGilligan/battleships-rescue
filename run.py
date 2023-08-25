@@ -6,7 +6,7 @@ import time
 import os
 
 
-HEADER = "\n___________________________________BATTLESHIP___________________________________\n_____________________________________RESCUE_____________________________________\n________________________________________________________________________________\n"
+HEADER = "________________________________________________________________________________\n___________________________________BATTLESHIP___________________________________\n_____________________________________RESCUE_____________________________________\n________________________________________________________________________________\n"
 
 
 
@@ -72,8 +72,8 @@ print(HEADER)
 
 name = input("\n\n\n\n                                Enter Username:\n")
 
-while 2 > len(name) > 10:
-    name = input('           Please enter a valid username between 2 and 10 characters')
+while len(name) > 10 or len(name) < 2:
+    name = input("           Please enter a valid username between 2 and 10 characters:\n")
 
 print('                               Username accepted')
 
