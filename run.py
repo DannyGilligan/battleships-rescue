@@ -85,7 +85,6 @@ print('                               Username accepted')
 MISSION_MESSAGE = f"                  Above Top Secret: For {name}'s eyes only.\n\nYour mission is to intercept and destroy a fleet of 5 enemy Destroyers \nthat are currently in pursuit of 2 friendly Merchant ships sailing for our \nNorthern Port. These Merchant ships are on a clandestine mission to deliver \nclassified cargo that will turn the tide of this war once and for all!\n\nUnfortunately, during a recent skirmish, the Merchant ships lost all \ncommunication capabilities and the Enemy's radar jamming technology is \npreventing us from locating them. But we know they're out there, somewhere.\n\nHunt down the enemy with extreme prejudice. Avoid friendly fire at all costs. \n\nRescue the Merchant Ships. Losing that cargo, means losing the war!\n"
 time.sleep(.5)
 
-# print('                               Username accepted')
 
 time.sleep(.5)
 
@@ -101,7 +100,28 @@ print(HEADER)
 
 print(MISSION_MESSAGE)
 
-mission_accept = input("\n                              Accept Mission? Y/N\n")
+
+mission_accept_valid_response = False
+
+while not mission_accept_valid_response:
+    response = input("\n                         Accept Mission? (Yes or No)\n")
+    if response.lower() == 'yes' or response.lower() == 'no':
+        mission_accept_valid_response = True
+    else:
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print(HEADER)
+        print(MISSION_MESSAGE)
+
+if response.lower() == "no":
+    time.sleep(.5)
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print(HEADER)
+    print("\n\n\n\n\n\n\n\n\n                 This war will be won only by those with the \n                   courage to take the fight to the enemy.")
+    time.sleep(20)
+    exit()
+ 
+
+print(response)
 
 time.sleep(.5)
 
