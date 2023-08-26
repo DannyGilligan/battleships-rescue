@@ -129,7 +129,7 @@ def print_game_board():
             print(col_elem, end = " ")
         print()
 
-GAME_BOARD[4][3] = ENEMY_HIT_SYMBOL
+GAME_BOARD[4][3] = ENEMY_HIT_SYMBOL  #Example to show symbol on game board
 
 # A function has been created below to dynamically size the available ammunition based on the difficulty level chosen by the user ('Easy' = 15, 'Normal' = 20 and 'Hard' = 25)
 
@@ -153,10 +153,10 @@ misses_counter = len(misses)                                                    
 def ship_generator():                                                                                                 # A function has been created to randomly generate ship locations
     ships = []                                                                                                        # Creates an empty array to store locations
     while len(ships) < 7:                                                                                             # While loop that will terminate after 7 ships created
-        xy = str(randint(0, ROWS)) + ',' + str(randint(0, COLS))                                                      # Creates random x,y coordinates on each loop
+        xy = str(randint(0, ROWS-1)) + ',' + str(randint(0, COLS-1))                                                  # Creates random x,y coordinates on each loop (constrained by game board size determined by difficulty level) NOTE FOR BUG, had to add -1
         if xy not in ships:                                                                                           # Checks if location is not already in the array
             ships.append(xy)                                                                                          # Appends location to ship array
-    return ships                                                                                                      # Returns the values
+    return ships                                                                                                      # Returns the values to ship_generator()
 
 ship_locations = ship_generator()                                                                                     # Assigns generated locations to variable
 
@@ -171,7 +171,6 @@ merchant_ships_sunk_counter = len(merchant_ships_sunk)                          
 
 
 print_game_board()
-
 
 #-------------------------------------------------------- Enter Shots -------------------------------------------------------------------------------------
 
@@ -219,12 +218,27 @@ while True:
         print(f'\nSELECT ROW/LATITUDE TO FIRE UPON: (Value between 0 and {adjusted_board_size_input})')
         print(row_fire_upon)
 
-user_shot_cordinates = [row_fire_upon, column_fire_upon]
+user_shot_coordinates = str(row_fire_upon) + ',' + str(column_fire_upon)                             #NOTE FOR BUG, had to debug and change the value to string so it would be recognised by the check shot function
 
+
+#-------------------------------------------------------- Enter Shots -------------------------------------------------------------------------------------
+
+
+def check_shot(ammunition):
+    if user_shot_coordinates in enemy_ships_afloat:
+        time.sleep(.5)
+        ammunition = ammunition - 1
+        print(f'**** GREAT SHOT {name.upper()}!! WE SUNK AN ENEMY DESTROYER! {enemy_ships_afloat_counter} NOW REMAINING! ****')
+    elif user_shot_coordinates in merchant_ships_afloat:
+        time.sleep(.5)
+        ammunition = ammunition - 1
+        print(f'**** CEASE FIRE {name.upper()}!! WE HIT A MERCHANT SHIP! {merchant_ships_afloat_counter} NOW REMAINING! ****')
+    else:
+        time.sleep(.5)
+        ammunition = ammunition - 1
+        print(f'     *** CONFIRMED MISS. WE HAVE {ammunition} TORPEDOS REMAINING ***')
 
 
 time.sleep(.5)
 
-fire_upon_status = ('                    **** YOU SUNK AN ENEMY DESTROYER ****')
-
-print(fire_upon_status)
+check_shot(ammunition)
