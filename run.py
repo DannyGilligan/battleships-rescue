@@ -95,7 +95,7 @@ MERCHANT_HIT_SYMBOL = "M"      # Denotes hit on friendly merchant ship
 
 
 
-BOARD_SIZE = 
+
 ROWS = 7            # Y axis (the rows will be counted vertically)
 COLS = 7            # X axis (the columns will be counted horizontally)
 
