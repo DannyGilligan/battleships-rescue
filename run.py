@@ -20,7 +20,7 @@ difficulty_level = input("\n\n\n\n             Choose difficuly level:  (Easy, N
 difficulty_level_options = ["easy", "normal", "hard"]
 
 while difficulty_level.lower() not in difficulty_level_options:  # A while loop is used here to perform a validation check on the difficulty level input and ensures it is either 'Easy', 'Normal' or 'Hard' before being accepted (NOTE FOR BUG, the options were originally Capitalised causing the validation to fail due to the .lower method being used)
-    os.system('cls' if os.name == 'nt' else 'clear')
+    os.system('cls' if os.name == 'nt' else 'clear') # Code from stack overflow forum on how to clear terminal screen
     print(HEADER)
     time.sleep(.25)
     difficulty_level = input("\n\n\n\n             Choose difficuly level:  (Easy, Normal, Hard)\n")
@@ -42,9 +42,7 @@ while len(name) > 10 or len(name) < 2:         # A while loop is used here to pe
     name = input("\n\n\n\n           Please enter a valid username between 2 and 10 characters:\n")
 
 print('\n\n                              Username accepted')    # A confirmation is displayed to the user once the username has been accepted
-
 time.sleep(.4)
-
 print('\n\n                          Retreiving Mission Details')
 
 
@@ -93,11 +91,16 @@ MISS_SYMBOL = "O"              # Denotes a miss
 MERCHANT_HIT_SYMBOL = "M"      # Denotes hit on friendly merchant ship
 
 
+def board_size():              # A function has been created to dynamically size the game board based on the difficulty level chosen by the user ('Easy' = 5 x 5, 'Normal' = 6 x 6 and 'Hard' = 7 x 7)
+    if difficulty_level.lower() == "easy":
+        return 5
+    elif difficulty_level.lower() == "normal":
+        return 6
+    else:
+        return 7
 
-
-
-ROWS = 7            # Y axis (the rows will be counted vertically)
-COLS = 7            # X axis (the columns will be counted horizontally)
+ROWS = board_size()            # Y axis (the rows will be counted vertically)
+COLS = board_size()            # X axis (the columns will be counted horizontally)
 
 GAME_BOARD = []     # Empty list to hold the list of lists for board
 
@@ -108,7 +111,7 @@ def print_game_board():
     """
     This function will generate a dynamically sized game board based on the number of rows and columns determined by the user's input
     """
-    os.system('cls' if os.name == 'nt' else 'clear')  # Code from stack overflow forum on how to clear screen
+    os.system('cls' if os.name == 'nt' else 'clear')  
     print(f"---------------------- Battleship Command Operations Deck ----------------------\n\nAmmunition Remaining   = {ammunition}\n\n[O] Misses             = {misses}\n[X] Enemy Ships Hit    = {enemy_ships_sunk_counter}  ({enemy_ships_afloat_counter} Remaining)\n[M] Merchant Ships Hit = {merchant_ships_sunk_counter}  ({merchant_ships_afloat_counter} Remaining)\n")
     col_headers = []                             # Empty array to hold the column header values based on the userinput
     for i in range(COLS):                        # Iterates based on the range dictated by the user input  
@@ -126,7 +129,15 @@ def print_game_board():
 
 GAME_BOARD[4][3] = ENEMY_HIT_SYMBOL
 
-ammunition = 15
+def ammunition_size():          # A function has been created to dynamically size the available ammunition based on the difficulty level chosen by the user ('Easy' = 15, 'Normal' = 20 and 'Hard' = 25)
+    if difficulty_level.lower() == "easy":
+        return 15
+    elif difficulty_level.lower() == "normal":
+        return 20
+    else:
+        return 25
+
+ammunition = ammunition_size()
 misses = 0
 
 
