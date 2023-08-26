@@ -70,7 +70,9 @@ while not mission_accept_valid_response:
         print(HEADER)
         print(MISSION_MESSAGE)
 
-if response.lower() == "no":    # An if statement is used here to exit the program if the user inputs 'No' as the answer on the 'Accept Mission' screen
+# An if statement is used below to exit the program if the user inputs 'No' as the answer on the 'Accept Mission' screen
+
+if response.lower() == "no":    
     time.sleep(.5)
     os.system('cls' if os.name == 'nt' else 'clear')
     print(HEADER)
@@ -129,7 +131,9 @@ def print_game_board():
 
 GAME_BOARD[4][3] = ENEMY_HIT_SYMBOL
 
-def ammunition_size():                           # A function has been created to dynamically size the available ammunition based on the difficulty level chosen by the user ('Easy' = 15, 'Normal' = 20 and 'Hard' = 25)
+# A function has been created below to dynamically size the available ammunition based on the difficulty level chosen by the user ('Easy' = 15, 'Normal' = 20 and 'Hard' = 25)
+
+def ammunition_size():                           
     if difficulty_level.lower() == "easy":
         return 15
     elif difficulty_level.lower() == "normal":
@@ -173,14 +177,10 @@ print_game_board()
 
 adjusted_board_size_input = board_size() - 1                                                                          # Note for Bug, had difficulty getting the board size to be interpreted as a number initially, spent a bit of time figuring it out!!
 
-# row_fire_upon = int(input(f'\nSELECT ROW/LATITUDE TO FIRE UPON: (Value between 0 and {adjusted_board_size_input})\n'))
 
-# while row_fire_upon > adjusted_board_size_input or row_fire_upon < 0 or not row_fire_upon.isnumeric():
-    #time.sleep(.25)
-    #row_fire_upon = input(f'\nSELECT ROW/LATITUDE TO FIRE UPON: (Value between 0 and {adjusted_board_size_input})\n')
+# A helpful post on Stackoverflow was referenced in order to validate the user inputs for entering shots https://stackoverflow.com/questions/27516093/python-how-to-only-accept-numbers-as-a-input, this has been adapted for use below
 
-
-while True:                     # A helpful post on Stackoverflow was referenced in order to validate the user inputs for entering shots https://stackoverflow.com/questions/27516093/python-how-to-only-accept-numbers-as-a-input
+while True:                     
     try:
         row_fire_upon = int(input(f'\nSELECT ROW/LATITUDE TO FIRE UPON: (Value between 0 and {adjusted_board_size_input})\n'))
         if row_fire_upon > adjusted_board_size_input or row_fire_upon < 0:
@@ -196,10 +196,9 @@ while True:                     # A helpful post on Stackoverflow was referenced
         os.system('cls' if os.name == 'nt' else 'clear')
         print_game_board()
 
+# A helpful post on Stackoverflow was referenced in order to validate the user inputs for entering shots https://stackoverflow.com/questions/27516093/python-how-to-only-accept-numbers-as-a-input, this has been adapted for use below
 
-# column_fire_upon = input(f'\nSELECT COLUMN/LONGITUDE TO FIRE UPON: (Value between 0 and {adjusted_board_size_input})\n')
-
-while True:                     # A helpful post on Stackoverflow was referenced in order to validate the user inputs for entering shots https://stackoverflow.com/questions/27516093/python-how-to-only-accept-numbers-as-a-input
+while True:       
     try:
         column_fire_upon = int(input(f'\nSELECT COLUMN/LONGITUDE TO FIRE UPON: (Value between 0 and {adjusted_board_size_input})\n'))
         if column_fire_upon > adjusted_board_size_input or column_fire_upon < 0:
