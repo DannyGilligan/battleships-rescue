@@ -85,39 +85,39 @@ os.system('cls' if os.name == 'nt' else 'clear')
 #-------------------------------------------------------- Generate Game Board -------------------------------------------------------------------------------------
 
 
-DEFAULT_SYMBOL = "~"           # Default symbol representing sea waves
-ENEMY_HIT_SYMBOL = "X"         # Hit on an enemy ship
-MISS_SYMBOL = "O"              # Denotes a miss
-MERCHANT_HIT_SYMBOL = "M"      # Denotes hit on friendly merchant ship
+DEFAULT_SYMBOL = "~"                             # Default symbol representing sea waves
+ENEMY_HIT_SYMBOL = "X"                           # Hit on an enemy ship
+MISS_SYMBOL = "O"                                # Denotes a miss
+MERCHANT_HIT_SYMBOL = "M"                        # Denotes hit on friendly merchant ship
 
 
-def board_size():              # A function has been created to dynamically size the game board based on the difficulty level chosen by the user ('Easy' = 5 x 5, 'Normal' = 6 x 6 and 'Hard' = 7 x 7)
+def board_size():                                # A function has been created to dynamically size the game board based on the difficulty level chosen by the user ('Easy' = 5 x 5, 'Normal' = 6 x 6 and 'Hard' = 7 x 7)
     if difficulty_level.lower() == "easy":
         return 5
     elif difficulty_level.lower() == "normal":
         return 6
     else:
         return 7
+ROWS = board_size()                              # Y axis (the rows will be counted vertically)
+COLS = board_size()                              # X axis (the columns will be counted horizontally)
 
-ROWS = board_size()            # Y axis (the rows will be counted vertically)
-COLS = board_size()            # X axis (the columns will be counted horizontally)
+GAME_BOARD = []                                  # Empty list to hold the list of lists for board
 
-GAME_BOARD = []     # Empty list to hold the list of lists for board
-
-for row in range(ROWS):                         # To generate board rows
-    GAME_BOARD.append([DEFAULT_SYMBOL] * COLS)  # Code to create the 'column' elements within each row array by appending a '~' symbol as a placeholder multiplied by the COLS value
+for row in range(ROWS):                          # To generate board rows
+    GAME_BOARD.append([DEFAULT_SYMBOL] * COLS)   # Code to create the 'column' elements within each row array by appending a '~' symbol as a placeholder multiplied by the COLS value
 
 def print_game_board():
     """
     This function will generate a dynamically sized game board based on the number of rows and columns determined by the user's input
     """
     os.system('cls' if os.name == 'nt' else 'clear')  
-    print(f"---------------------- Battleship Command Operations Deck ----------------------\n\nAmmunition Remaining   = {ammunition}\n\n[O] Misses             = {misses}\n[X] Enemy Ships Hit    = {enemy_ships_sunk_counter}  ({enemy_ships_afloat_counter} Remaining)\n[M] Merchant Ships Hit = {merchant_ships_sunk_counter}  ({merchant_ships_afloat_counter} Remaining)\n")
-    col_headers = []                             # Empty array to hold the column header values based on the userinput
-    for i in range(COLS):                        # Iterates based on the range dictated by the user input  
-        col_headers.append(i)                    # Appends the column header numbers to the array 
-    col_headers.insert(0, " ")                   # NOTE FOR BUG, HAD TO INDENT THIS OUTSIDE OF THE LOOP, and insert a blank space so it would align
-    print("                             ", *col_headers, sep = ' ')       # Breaks out the column headers from the array and prints horizontally
+    print(f"---------------------- Battleship Command Operations Deck ----------------------\n\nAmmunition Remaining   = {ammunition}\nMisses [O]             = {misses}\nEnemy Ships Hit [X]    = {enemy_ships_sunk_counter}  ({enemy_ships_afloat_counter} Remaining)\nMerchant Ships Hit [M] = {merchant_ships_sunk_counter}  ({merchant_ships_afloat_counter} Remaining)\n")
+    
+    col_headers = []                                                  # Empty array to hold the column header values based on the userinput
+    for i in range(COLS):                                             # Iterates based on the range dictated by the user input  
+        col_headers.append(i)                                         # Appends the column header numbers to the array 
+    col_headers.insert(0, " ")                                        # NOTE FOR BUG, HAD TO INDENT THIS OUTSIDE OF THE LOOP, and insert a blank space so it would align
+    print("                             ", *col_headers, sep = ' ')   # Breaks out the column headers from the array and prints horizontally
 
     row_counter = 0
     for row_array in GAME_BOARD: 
@@ -129,7 +129,7 @@ def print_game_board():
 
 GAME_BOARD[4][3] = ENEMY_HIT_SYMBOL
 
-def ammunition_size():          # A function has been created to dynamically size the available ammunition based on the difficulty level chosen by the user ('Easy' = 15, 'Normal' = 20 and 'Hard' = 25)
+def ammunition_size():                           # A function has been created to dynamically size the available ammunition based on the difficulty level chosen by the user ('Easy' = 15, 'Normal' = 20 and 'Hard' = 25)
     if difficulty_level.lower() == "easy":
         return 15
     elif difficulty_level.lower() == "normal":
@@ -145,27 +145,24 @@ misses = 0
 #-------------------------------------------------------- Generate Ship Locations -------------------------------------------------------------------------------------
 
 
-def ship_generator():
-    """
-    Generates random locations for ships
-    """
-    ships = []                      # Creates an empty array to store locations
-    while len(ships) < 7:           # While loop that will terminate after 7 ships created
-        xy = str(randint(0, ROWS)) + ',' + str(randint(0, COLS))  # Creates random x,y coordinates on each loop
-        if xy not in ships:         # Checks if location is not already in the array
-            ships.append(xy)        # Appends location to ship array
-    return ships                    # Returns the values
+def ship_generator():                                                                                                 # A function has been created to randomly generate ship locations
+    ships = []                                                                                                        # Creates an empty array to store locations
+    while len(ships) < 7:                                                                                             # While loop that will terminate after 7 ships created
+        xy = str(randint(0, ROWS)) + ',' + str(randint(0, COLS))                                                      # Creates random x,y coordinates on each loop
+        if xy not in ships:                                                                                           # Checks if location is not already in the array
+            ships.append(xy)                                                                                          # Appends location to ship array
+    return ships                                                                                                      # Returns the values
 
-ship_locations = ship_generator()   # Assigns generated locations to variable
+ship_locations = ship_generator()                                                                                     # Assigns generated locations to variable
 
 enemy_ships_afloat = [ship_locations[0], ship_locations[1], ship_locations[2], ship_locations[3], ship_locations[4]]  # The enemy ship locations are retrived from the first 5 elements of the ship_location variable
-enemy_ships_sunk = []    # Array to hold coordinates of sunken enemy ships
-enemy_ships_afloat_counter = len(enemy_ships_afloat) # Variable to count remaining ships
-enemy_ships_sunk_counter = len(enemy_ships_sunk)  # Variable to count sunk ships
-merchant_ships_afloat = [ship_locations[5], ship_locations[6]]        # The Merchant ships are retrieved from the last two elements in the ship_locations array
-merchant_ships_sunk = []    # Array to hold coordinates of sunken merchant ships
-merchant_ships_afloat_counter = len(merchant_ships_afloat)  # Variable to count remaining ships
-merchant_ships_sunk_counter = len(merchant_ships_sunk)  # Variable to count sunk ships
+enemy_ships_sunk = []                                                                                                 # Array to hold coordinates of sunken enemy ships
+enemy_ships_afloat_counter = len(enemy_ships_afloat)                                                                  # Variable to count remaining ships
+enemy_ships_sunk_counter = len(enemy_ships_sunk)                                                                      # Variable to count sunk ships
+merchant_ships_afloat = [ship_locations[5], ship_locations[6]]                                                        # The Merchant ships are retrieved from the last two elements in the ship_locations array
+merchant_ships_sunk = []                                                                                              # Array to hold coordinates of sunken merchant ships
+merchant_ships_afloat_counter = len(merchant_ships_afloat)                                                            # Variable to count remaining ships
+merchant_ships_sunk_counter = len(merchant_ships_sunk)                                                                # Variable to count sunk ships
 
 
 
