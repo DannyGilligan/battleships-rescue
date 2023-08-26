@@ -41,7 +41,7 @@ while len(name) > 10 or len(name) < 2:         # A while loop is used here to pe
     time.sleep(.25)
     name = input("\n\n\n\n           Please enter a valid username between 2 and 10 characters:\n")
 
-print('\n\n                              Username accepted')    # A confirmation is displayed to the user once the username has been accepted
+print('\n\n                               Username accepted')    # A confirmation is displayed to the user once the username has been accepted
 time.sleep(.4)
 print('\n\n                          Retreiving Mission Details')
 
