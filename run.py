@@ -165,17 +165,59 @@ merchant_ships_afloat_counter = len(merchant_ships_afloat)                      
 merchant_ships_sunk_counter = len(merchant_ships_sunk)                                                                # Variable to count sunk ships
 
 
-
-
-
-
 print_game_board()
 
-row_fire_upon = input('\nSELECT ROW/LATITUDE TO FIRE UPON:\n')
 
-column_fire_upon = input('\nSELECT COLUMN/LONGITUDE TO FIRE UPON:\n')
+#-------------------------------------------------------- Enter Shots -------------------------------------------------------------------------------------
 
 
+adjusted_board_size_input = board_size() - 1                                                                          # Note for Bug, had difficulty getting the board size to be interpreted as a number initially, spent a bit of time figuring it out!!
+
+# row_fire_upon = int(input(f'\nSELECT ROW/LATITUDE TO FIRE UPON: (Value between 0 and {adjusted_board_size_input})\n'))
+
+# while row_fire_upon > adjusted_board_size_input or row_fire_upon < 0 or not row_fire_upon.isnumeric():
+    #time.sleep(.25)
+    #row_fire_upon = input(f'\nSELECT ROW/LATITUDE TO FIRE UPON: (Value between 0 and {adjusted_board_size_input})\n')
+
+
+while True:                     # A helpful post on Stackoverflow was referenced in order to validate the user inputs for entering shots https://stackoverflow.com/questions/27516093/python-how-to-only-accept-numbers-as-a-input
+    try:
+        row_fire_upon = int(input(f'\nSELECT ROW/LATITUDE TO FIRE UPON: (Value between 0 and {adjusted_board_size_input})\n'))
+        if row_fire_upon > adjusted_board_size_input or row_fire_upon < 0:
+            raise ValueError
+        else:
+            break
+
+    except ValueError:
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print_game_board()
+        print(f'\n**INVALID INPUT**')
+        time.sleep(.5)
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print_game_board()
+
+
+# column_fire_upon = input(f'\nSELECT COLUMN/LONGITUDE TO FIRE UPON: (Value between 0 and {adjusted_board_size_input})\n')
+
+while True:                     # A helpful post on Stackoverflow was referenced in order to validate the user inputs for entering shots https://stackoverflow.com/questions/27516093/python-how-to-only-accept-numbers-as-a-input
+    try:
+        column_fire_upon = int(input(f'\nSELECT COLUMN/LONGITUDE TO FIRE UPON: (Value between 0 and {adjusted_board_size_input})\n'))
+        if column_fire_upon > adjusted_board_size_input or column_fire_upon < 0:
+            raise ValueError
+        else:
+            break
+
+    except ValueError:
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print_game_board()
+        print(f'\nSELECT ROW/LATITUDE TO FIRE UPON: (Value between 0 and {adjusted_board_size_input})')
+        print(row_fire_upon)
+        print(f'\n**INVALID INPUT**')
+        time.sleep(.5)
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print_game_board()
+        print(f'\nSELECT ROW/LATITUDE TO FIRE UPON: (Value between 0 and {adjusted_board_size_input})')
+        print(row_fire_upon)
 
 column_fire_coordinate = column_fire_upon
 row_fire_coordinate = row_fire_upon
