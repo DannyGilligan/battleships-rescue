@@ -2,6 +2,12 @@
 
 ## Battleship Rescue
 
+![image](assets/images/battleship.png)
+
+
+
+
+
 * This app has been deployed, however due to time constraints it is not complete, the game is stil being developed.
 
 The screenshots below give a rough outline of the intended design of the app.
