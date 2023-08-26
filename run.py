@@ -113,7 +113,7 @@ def print_game_board():
     This function will generate a dynamically sized game board based on the number of rows and columns determined by the user's input
     """
     os.system('cls' if os.name == 'nt' else 'clear')  
-    print(f"---------------------- Battleship Command Operations Deck ----------------------\n\nAmmunition Remaining   = {ammunition}\nMisses [O]             = {misses}\nEnemy Ships Hit [X]    = {enemy_ships_sunk_counter}  ({enemy_ships_afloat_counter} Remaining)\nMerchant Ships Hit [M] = {merchant_ships_sunk_counter}  ({merchant_ships_afloat_counter} Remaining)\n")
+    print(f"---------------------- Battleship Command Operations Deck ----------------------\n\nAmmunition Remaining   = {ammunition}\nMisses [O]             = {misses_counter}\nEnemy Ships Hit [X]    = {enemy_ships_sunk_counter}  ({enemy_ships_afloat_counter} Remaining)\nMerchant Ships Hit [M] = {merchant_ships_sunk_counter}  ({merchant_ships_afloat_counter} Remaining)\n")
 
     col_headers = []                                                  # Empty array to hold the column header values based on the userinput
     for i in range(COLS):                                             # Iterates based on the range dictated by the user input  
@@ -142,7 +142,8 @@ def ammunition_size():
         return 25
 
 ammunition = ammunition_size()
-misses = 0
+misses = []                                                                                                           # Array to hold misses
+misses_counter = len(misses)                                                                                          # Variable to count misses
 
 
 
@@ -218,8 +219,9 @@ while True:
         print(f'\nSELECT ROW/LATITUDE TO FIRE UPON: (Value between 0 and {adjusted_board_size_input})')
         print(row_fire_upon)
 
-column_fire_coordinate = column_fire_upon
-row_fire_coordinate = row_fire_upon
+user_shot_cordinates = [row_fire_upon, column_fire_upon]
+
+
 
 time.sleep(.5)
 
