@@ -112,7 +112,7 @@ def print_game_board():
     """
     os.system('cls' if os.name == 'nt' else 'clear')  
     print(f"---------------------- Battleship Command Operations Deck ----------------------\n\nAmmunition Remaining   = {ammunition}\nMisses [O]             = {misses}\nEnemy Ships Hit [X]    = {enemy_ships_sunk_counter}  ({enemy_ships_afloat_counter} Remaining)\nMerchant Ships Hit [M] = {merchant_ships_sunk_counter}  ({merchant_ships_afloat_counter} Remaining)\n")
-    
+
     col_headers = []                                                  # Empty array to hold the column header values based on the userinput
     for i in range(COLS):                                             # Iterates based on the range dictated by the user input  
         col_headers.append(i)                                         # Appends the column header numbers to the array 
@@ -171,9 +171,9 @@ merchant_ships_sunk_counter = len(merchant_ships_sunk)                          
 
 print_game_board()
 
-row_fire_upon = input('\nSELECT ROW/LONGITUDE TO FIRE UPON:\n')
+row_fire_upon = input('\nSELECT ROW/LATITUDE TO FIRE UPON:\n')
 
-column_fire_upon = input('\nSELECT COLUMN/LATITUDE TO FIRE UPON:\n')
+column_fire_upon = input('\nSELECT COLUMN/LONGITUDE TO FIRE UPON:\n')
 
 
 
