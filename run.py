@@ -9,12 +9,93 @@ import os
 HEADER = "________________________________________________________________________________\n___________________________________BATTLESHIP___________________________________\n_____________________________________RESCUE_____________________________________\n________________________________________________________________________________\n"
 
 
+#-------------------------------------------------------- Enter Difficulty -------------------------------------------------------------------------------------
 
-DEFAULT_SYMBOL = "~"           # Default symbol
+
+time.sleep(1)
+print(HEADER)
+
+difficulty_level = input("\n\n\n\n             Choose difficuly level:  (Easy, Normal, Hard)\n")
+
+difficulty_level_options = ["easy", "normal", "hard"]
+
+while difficulty_level.lower() not in difficulty_level_options:  # A while loop is used here to perform a validation check on the difficulty level input and ensures it is either 'Easy', 'Normal' or 'Hard' before being accepted (NOTE FOR BUG, the options were originally Capitalised causing the validation to fail due to the .lower method being used)
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print(HEADER)
+    time.sleep(.25)
+    difficulty_level = input("\n\n\n\n             Choose difficuly level:  (Easy, Normal, Hard)\n")
+
+
+#-------------------------------------------------------- Enter Username -------------------------------------------------------------------------------------
+
+
+time.sleep(.5)
+os.system('cls' if os.name == 'nt' else 'clear')
+print(HEADER)
+
+name = input("\n\n\n\n                                Enter Username:\n")
+
+while len(name) > 10 or len(name) < 2:         # A while loop is used here to perform a validation check on the username input and ensures it is between 2 and 10 characters before being accepted
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print(HEADER)
+    time.sleep(.25)
+    name = input("\n\n\n\n           Please enter a valid username between 2 and 10 characters:\n")
+
+print('\n\n                              Username accepted')    # A confirmation is displayed to the user once the username has been accepted
+
+time.sleep(.4)
+
+print('\n\n                          Retreiving Mission Details')
+
+
+#-------------------------------------------------------- Accept Mission -------------------------------------------------------------------------------------
+
+
+MISSION_MESSAGE = f"                  Above Top Secret: For {name}'s eyes only.\n\nYour mission is to intercept and destroy a fleet of 5 enemy Destroyers \nthat are currently in pursuit of 2 friendly Merchant ships sailing for our \nNorthern Port. These Merchant ships are on a clandestine mission to deliver \nclassified cargo that will turn the tide of this war once and for all!\n\nUnfortunately, during a recent skirmish, the Merchant ships lost all \ncommunication capabilities and the Enemy's radar jamming technology is \npreventing us from locating them. But we know they're out there, somewhere.\n\nHunt down the enemy with extreme prejudice. Avoid friendly fire at all costs. \n\nRescue the Merchant Ships. Losing that cargo, means losing the war!\n"
+
+time.sleep(1.2)
+os.system('cls' if os.name == 'nt' else 'clear')
+time.sleep(.5)
+print(HEADER)
+print(MISSION_MESSAGE)
+
+mission_accept_valid_response = False
+
+# A while loop is used below to perform a validation check on the user input for the 'Accept Mission' screen and ensures the input is either 'Yes' or 'No', a helpful guide on https://www.freecodecamp.org/news/how-to-use-loops-in-python/ was referenced here
+
+while not mission_accept_valid_response:    
+    response = input("\n                        Accept Mission? (Yes or No)\n")
+    if response.lower() == 'yes' or response.lower() == 'no':
+        mission_accept_valid_response = True
+    else:
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print(HEADER)
+        print(MISSION_MESSAGE)
+
+if response.lower() == "no":    # An if statement is used here to exit the program if the user inputs 'No' as the answer on the 'Accept Mission' screen
+    time.sleep(.5)
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print(HEADER)
+    print(f"\n\n\n\n\n\n\n                 This war will be won only by those with the \n                courage to take the fight to the enemy {name}.")
+    time.sleep(6)
+    exit()
+ 
+time.sleep(.5)
+os.system('cls' if os.name == 'nt' else 'clear')
+
+
+#-------------------------------------------------------- Generate Game Board -------------------------------------------------------------------------------------
+
+
+DEFAULT_SYMBOL = "~"           # Default symbol representing sea waves
 ENEMY_HIT_SYMBOL = "X"         # Hit on an enemy ship
 MISS_SYMBOL = "O"              # Denotes a miss
 MERCHANT_HIT_SYMBOL = "M"      # Denotes hit on friendly merchant ship
 
+
+
+
+BOARD_SIZE = 
 ROWS = 7            # Y axis (the rows will be counted vertically)
 COLS = 7            # X axis (the columns will be counted horizontally)
 
@@ -45,6 +126,14 @@ def print_game_board():
 
 GAME_BOARD[4][3] = ENEMY_HIT_SYMBOL
 
+ammunition = 15
+misses = 0
+
+
+
+#-------------------------------------------------------- Generate Ship Locations -------------------------------------------------------------------------------------
+
+
 def ship_generator():
     """
     Generates random locations for ships
@@ -58,15 +147,10 @@ def ship_generator():
 
 ship_locations = ship_generator()   # Assigns generated locations to variable
 
-ammunition = 14
-
-misses = 0
-
 enemy_ships_afloat = [ship_locations[0], ship_locations[1], ship_locations[2], ship_locations[3], ship_locations[4]]  # The enemy ship locations are retrived from the first 5 elements of the ship_location variable
 enemy_ships_sunk = []    # Array to hold coordinates of sunken enemy ships
 enemy_ships_afloat_counter = len(enemy_ships_afloat) # Variable to count remaining ships
 enemy_ships_sunk_counter = len(enemy_ships_sunk)  # Variable to count sunk ships
-
 merchant_ships_afloat = [ship_locations[5], ship_locations[6]]        # The Merchant ships are retrieved from the last two elements in the ship_locations array
 merchant_ships_sunk = []    # Array to hold coordinates of sunken merchant ships
 merchant_ships_afloat_counter = len(merchant_ships_afloat)  # Variable to count remaining ships
@@ -76,81 +160,6 @@ merchant_ships_sunk_counter = len(merchant_ships_sunk)  # Variable to count sunk
 
 
 
-# Code below here has been added to outline the pages leading up to displaying the game board to the user
-# Project will be deployed in an unfinished state due to time constraints
-# This game is not currently playable. These lines of code are temporary. The project will continue to be developed in order to resubmit.
-
-time.sleep(1)
-print(HEADER)
-
-difficulty_level = input("\n\n\n\n             Choose difficuly level:  (Easy, Normal, Hard)\n")
-
-difficulty_level_options = ["easy", "normal", "hard"]
-
-while difficulty_level.lower() not in difficulty_level_options:  # A while loop is used here to perform a validation check on the difficulty level input and ensures it is either 'Easy', 'Normal' or 'Hard' before being accepted (NOTE FOR BUG, the options were originally Capitalised causing the validation to fail due to the .lower method being used)
-    os.system('cls' if os.name == 'nt' else 'clear')
-    print(HEADER)
-    time.sleep(.25)
-    difficulty_level = input("\n\n\n\n             Choose difficuly level:  (Easy, Normal, Hard)\n")
-
-time.sleep(.5)
-os.system('cls' if os.name == 'nt' else 'clear')
-print(HEADER)
-
-name = input("\n\n\n\n                                Enter Username:\n")
-
-while len(name) > 10 or len(name) < 2:         # A while loop is used here to perform a validation check on the username input and ensures it is between 2 and 10 characters before being accepted
-    os.system('cls' if os.name == 'nt' else 'clear')
-    print(HEADER)
-    time.sleep(.25)
-    name = input("\n\n\n\n           Please enter a valid username between 2 and 10 characters:\n")
-
-print('\n\n\n\n                               Username accepted')    # A confirmation is displayed to the user once the username has been accepted
-
-    
-
-MISSION_MESSAGE = f"                  Above Top Secret: For {name}'s eyes only.\n\nYour mission is to intercept and destroy a fleet of 5 enemy Destroyers \nthat are currently in pursuit of 2 friendly Merchant ships sailing for our \nNorthern Port. These Merchant ships are on a clandestine mission to deliver \nclassified cargo that will turn the tide of this war once and for all!\n\nUnfortunately, during a recent skirmish, the Merchant ships lost all \ncommunication capabilities and the Enemy's radar jamming technology is \npreventing us from locating them. But we know they're out there, somewhere.\n\nHunt down the enemy with extreme prejudice. Avoid friendly fire at all costs. \n\nRescue the Merchant Ships. Losing that cargo, means losing the war!\n"
-time.sleep(.4)
-
-
-time.sleep(.4)
-
-print('\n\n\n\n\n\n                           Retreiving Mission Details')
-
-time.sleep(1.2)
-
-os.system('cls' if os.name == 'nt' else 'clear')
-
-time.sleep(.5)
-
-print(HEADER)
-
-print(MISSION_MESSAGE)
-
-
-mission_accept_valid_response = False
-
-while not mission_accept_valid_response:    # A while loop is used again here to perform a validation check on the user input for the 'Accept Mission' screen and ensures the input is either 'Yes' or 'No'
-    response = input("\n                         Accept Mission? (Yes or No)\n")
-    if response.lower() == 'yes' or response.lower() == 'no':
-        mission_accept_valid_response = True
-    else:
-        os.system('cls' if os.name == 'nt' else 'clear')
-        print(HEADER)
-        print(MISSION_MESSAGE)
-
-if response.lower() == "no":    # An if statement is used here to exit the program if the user inputs 'No' as the answer on the 'Accept Mission' screen
-    time.sleep(.5)
-    os.system('cls' if os.name == 'nt' else 'clear')
-    print(HEADER)
-    print("\n\n\n\n\n\n\n\n\n                 This war will be won only by those with the \n                   courage to take the fight to the enemy.")
-    time.sleep(6)
-    exit()
- 
-
-time.sleep(.5)
-
-os.system('cls' if os.name == 'nt' else 'clear')
 
 print_game_board()
 
@@ -168,4 +177,3 @@ time.sleep(.5)
 fire_upon_status = ('                    **** YOU SUNK AN ENEMY DESTROYER ****')
 
 print(fire_upon_status)
-print(enemy_ships_afloat_counter)
